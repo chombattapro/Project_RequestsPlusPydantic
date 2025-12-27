@@ -5,3 +5,10 @@ class Post(BaseModel):
     id: int
     title: str
     body: str
+
+class Comment(BaseModel):
+    postId: int
+    id: int
+    name: str
+    email: str
+    body: str
