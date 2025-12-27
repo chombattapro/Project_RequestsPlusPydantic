@@ -32,8 +32,10 @@ def test_create_post(session, base_url, test_data, expected_id):
     response = session.post(f"{base_url}/posts", json=test_data)
     assert response.status_code == 201, f"Ожидался 201, получен {response.status_code}"
     actual_post = Post.model_validate(response.json())
-    expected_post = Post(userId=test_data['userId'],
-                    id=expected_id,
-                    title=test_data['title'],
-                    body=test_data['body'])
+    expected_post = Post(
+        userId=test_data['userId'],
+        id=expected_id,
+        title=test_data['title'],
+        body=test_data['body']
+    )
     assert actual_post == expected_post, f"Ожидался: {expected_post}, получен: {actual_post}"
